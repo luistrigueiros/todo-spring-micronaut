@@ -1,3 +1,15 @@
+pluginManagement {
+	repositories {
+		mavenCentral()
+		gradlePluginPortal()
+		mavenLocal()
+		maven { url 'https://repo.spring.io/snapshot' }
+	}
+//	plugins {
+//		id "${quarkusPluginId}" version "${quarkusPluginVersion}"
+//	}
+}
+
 def buildProfile = hasProperty('profile') ? getProperty('profile') : 'spring'
 def buildFile = "build-${buildProfile}.gradle"
 
@@ -5,5 +17,5 @@ if (!file(buildFile).exists()) {
 	throw new GradleException("Build file $buildFile for profile $buildProfile does not exist")
 }
 
-rootProject.name = 'todo-spring-quarkus'
+rootProject.name = 'todo-spring-micronaut'
 rootProject.buildFileName = buildFile

@@ -1,13 +1,13 @@
 package io.quarkus.todospringquarkus;
 
-import org.springframework.boot.SpringApplication;
+import io.micronaut.runtime.Micronaut;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class TodoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TodoApplication.class, args);
+		Micronaut.run(TodoApplication.class, args);
 	}
 
 }

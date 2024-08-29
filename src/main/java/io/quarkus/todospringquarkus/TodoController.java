@@ -1,9 +1,11 @@
 package io.quarkus.todospringquarkus;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-import javax.transaction.Transactional;
 
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,8 @@ public class TodoController {
 
     @GetMapping
     public List<TodoEntity> findAll() {
-        return this.todoRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+//        return this.todoRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        return StreamSupport.stream(this.todoRepository.findAll().spliterator(), false).collect(Collectors.toList());
     }
  
     @GetMapping("/{id}")
